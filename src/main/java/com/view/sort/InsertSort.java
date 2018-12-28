@@ -22,21 +22,21 @@ public class InsertSort {
         int n = a.length;
         int i,j;
         for(i=1;i<n;i++){
-            /**
-             * temp为本次循环待插入有序列表中的数
+            /*
+              temp为本次循环待插入有序列表中的数
              */
             int temp = a[i];
-            /**
-             * 寻找temp插入有序列表的正确位置
+            /*
+              寻找temp插入有序列表的正确位置
              */
             for(j=i-1;j>=0 && a[j]>temp;j--){
-                /**
-                 * 元素后移，为插入temp做准备
+                /*
+                  元素后移，为插入temp做准备
                  */
                 a[j+1] = a[j];
             }
-            /**
-             * 插入temp
+            /*
+              插入temp
              */
             a[j+1] = temp;
             print(a,n,i);

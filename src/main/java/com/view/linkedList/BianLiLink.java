@@ -1,4 +1,4 @@
-package com.view.collection;
+package com.view.linkedList;
 
 /**
  * Created with IDEA
@@ -8,7 +8,7 @@ package com.view.collection;
  */
 public class BianLiLink {
 
-    static class Node{
+    static class Node {
         private int val;
         private Node next;
 
@@ -31,13 +31,16 @@ public class BianLiLink {
 
 
     public static void main(String[] args) {
-        buildLink();
-
-
+        Node root = buildLink();
+        Node node = root;
+        while (node != null && node.getNext() != null) {
+            System.out.println(node.getVal());
+            node = node.getNext();
+        }
 
     }
 
-    private static void buildLink() {
+    private static Node buildLink() {
         Node head = new Node();
         Node node1 = new Node();
         Node node2 = new Node();
@@ -56,6 +59,7 @@ public class BianLiLink {
         node4.setNext(node5);
         node5.setVal(6);
         node5.setNext(null);
+        return head;
     }
 
 }

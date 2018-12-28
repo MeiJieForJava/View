@@ -1,6 +1,4 @@
-package com.view.LinkedList;
-
-import java.util.PriorityQueue;
+package com.view.linkedList;
 
 /**
  * Created with IDEA

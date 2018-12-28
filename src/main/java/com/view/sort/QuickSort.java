@@ -81,7 +81,7 @@ public class QuickSort {
         return low;
     }
     //交换数组的两个位置
-    public static void swap(int[] L, int i, int j) {
+    private static void swap(int[] L, int i, int j) {
 
         int temp=L[i];
         L[i]=L[j];

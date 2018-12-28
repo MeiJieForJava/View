@@ -1,4 +1,4 @@
-package com.view.LinkedList;
+package com.view.linkedList;
 
 /**
  * Created with IDEA
