@@ -50,7 +50,7 @@ public class HeapSort {
 
     public static void main(String[] args) {
 //        int[] arr = {1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 11, 12, 7, 8, 9, 13, 1};
-        int[] arr = {23, 26, 1, 1, 2, 2, 3, 123, 456, 4, 58, 7, 85, 36};
+        int[] arr = { 23, 26, 1, 2, 3, 3, 4, 4, 5, 7, 85, 36};
 
         HeapSort.heapSort(arr);
         System.out.println(Arrays.toString(arr));

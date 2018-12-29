@@ -1,5 +1,7 @@
 package com.view.java8;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -14,11 +16,19 @@ public class AntTest2 {
 
     //verify param
     private static AntObject find_k(Integer[] arr, int k) {
+        AntObject antObject = new AntObject();
         if (arr == null || arr.length == 0) {
-            return null;
+            antObject.setErrMsg("请输入src数组");
+            return antObject;
         }
-        if (k < 1 || k > arr.length) {
-            return null;
+        if (k < 1) {
+            antObject.setErrMsg("正确的k");
+            return antObject;
+        }
+
+        if (k > arr.length) {
+            antObject.setErrMsg(String.format("当前数组不重复的数字有[%s]个,不存在第[%s]大的数字", arr.length, k));
+            return antObject;
         }
         return get_k(arr.length - k + 1, arr, 0, arr.length - 1);
     }
@@ -103,8 +113,8 @@ public class AntTest2 {
         //第一步取值
         AntObject result = find_k(setArr, k);
 
-        if (result == null) {
-            System.out.println("setArr param error");
+        if (StringUtils.isNotBlank(result.getErrMsg())) {
+            System.out.println(result.getErrMsg());
             return;
         }
 
@@ -158,6 +168,7 @@ public class AntTest2 {
         private Integer num;
         private Integer index;
         private Integer count;
+        private String errMsg;
 
         Integer getNum() {
             return num;
@@ -181,6 +192,14 @@ public class AntTest2 {
 
         void setCount(Integer count) {
             this.count = count;
+        }
+
+        public String getErrMsg() {
+            return errMsg;
+        }
+
+        public void setErrMsg(String errMsg) {
+            this.errMsg = errMsg;
         }
 
         @Override
