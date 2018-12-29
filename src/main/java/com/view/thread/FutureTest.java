@@ -31,10 +31,6 @@ public class FutureTest {
         System.out.println("main end");
     }
 
-    @Test
-    public void test1(){
-        Thread thread = new Thread(() -> Runnable);
 
-    }
 
 }
