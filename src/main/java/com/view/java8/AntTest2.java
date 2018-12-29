@@ -100,6 +100,7 @@ public class AntTest2 {
         int[] arrays = {1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 11, 12, 7, 8, 9, 13, 1};
 //        int[] arrays = {23, 26, 1, 2, 3, 3, 4, 4, 5, 7, 85, 36};
 //        int[] arrays = {23, 26, 1, 1, 2, 2, 3, 123, 456, 4, 58, 7, 85, 36};
+//        int[] arrays = {23, 26, 1, 1, 23, 2, 32, 123, 456, 4, 58, 7, 85, 36};
         if (arrays == null || arrays.length == 0) {
             System.out.println("param error");
             return;
