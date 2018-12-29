@@ -195,11 +195,11 @@ public class AntTest2 {
             this.count = count;
         }
 
-        public String getErrMsg() {
+        String getErrMsg() {
             return errMsg;
         }
 
-        public void setErrMsg(String errMsg) {
+        void setErrMsg(String errMsg) {
             this.errMsg = errMsg;
         }
 
