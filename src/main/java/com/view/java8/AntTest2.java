@@ -7,11 +7,10 @@ import java.util.*;
  * Created with IDEA
  * USER : meijie
  * Date : 2018/12/29
- * Time : 15:58
+ * Time : 19:37
  * Project : View
  */
-//https://blog.csdn.net/hzh_csdn/article/details/53446211
-public class AntTest {
+public class AntTest2 {
 
     //verify param
     private static AntObject find_k(Integer[] arr, int k) {
@@ -88,20 +87,18 @@ public class AntTest {
     }
 
     public static void main(String[] args) {
-//        int[] arrays = {1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 11, 12, 7, 8, 9, 13, 1};
+        int[] arrays = {1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 11, 12, 7, 8, 9, 13, 1};
 //        int[] arrays = {23, 26, 1, 2, 3, 3, 4, 4, 5, 7, 85, 36};
-        int[] arrays = {23, 26, 1, 1, 2, 2, 3, 123, 456, 4, 58, 7, 85, 36};
+//        int[] arrays = {23, 26, 1, 1, 2, 2, 3, 123, 456, 4, 58, 7, 85, 36};
         if (arrays == null || arrays.length == 0) {
             System.out.println("param error");
             return;
         }
 
-        Set<Integer> s = new HashSet<>();
-        Arrays.stream(arrays).forEach(s::add);
+        Map<Integer, AntObject> map = fillArrayMap(arrays);
 
-        Integer[] setArr = s.toArray(new Integer[]{});
-        int k = 10;
-        System.out.println(Arrays.toString(setArr));
+        Integer[] setArr = map.keySet().toArray(new Integer[]{});
+        int k = 11;
 
         //第一步取值
         AntObject result = find_k(setArr, k);
@@ -111,12 +108,13 @@ public class AntTest {
             return;
         }
 
+        List<Integer> list = fillMiddleList(map, setArr, result);
+
         System.out.println(String.format("第[%s]大的数是[%s]", k, result.getNum()));
-        Set<Integer> set = new HashSet<>(Arrays.asList(setArr).subList(0, result.getIndex()));
-        Integer[] setMideleArr = set.toArray(new Integer[]{});
-        System.out.println(Arrays.toString(setMideleArr));
 
         //第二步取中位数
+        Integer[] setMideleArr = list.toArray(new Integer[]{});
+        System.out.println(String.format("除前十个大数以外的所有数字是%s", Arrays.toString(setMideleArr)));
         BigDecimal middleNum = middleNum(setMideleArr);
 
         if (middleNum == null) {
@@ -127,10 +125,39 @@ public class AntTest {
 
     }
 
+    private static Map<Integer, AntObject> fillArrayMap(int[] arrays) {
+        Map<Integer, AntObject> map = new HashMap<>();
+        for (int arr : arrays) {
+            if (map.containsKey(arr)) {
+                AntObject ao = map.get(arr);
+                ao.setCount(ao.getCount() + 1);
+            } else {
+                AntObject ao = new AntObject();
+                ao.setCount(1);
+                ao.setNum(arr);
+                map.put(arr, ao);
+            }
+        }
+        return map;
+    }
+
+    private static List<Integer> fillMiddleList(Map<Integer, AntObject> map, Integer[] setArr, AntObject result) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < result.getIndex(); i++) {
+            Integer sa = setArr[i];
+            AntObject antObject = map.get(sa);
+            for (int j = 0; j < antObject.getCount(); j++) {
+                list.add(antObject.getNum());
+            }
+        }
+        return list;
+    }
+
 
     static class AntObject {
         private Integer num;
         private Integer index;
+        private Integer count;
 
         Integer getNum() {
             return num;
@@ -148,11 +175,20 @@ public class AntTest {
             this.index = index;
         }
 
+        Integer getCount() {
+            return count;
+        }
+
+        void setCount(Integer count) {
+            this.count = count;
+        }
+
         @Override
         public String toString() {
-            final StringBuilder sb = new StringBuilder("AntObject{");
+            final StringBuffer sb = new StringBuffer("AntObject{");
             sb.append("num=").append(num);
             sb.append(", index=").append(index);
+            sb.append(", count=").append(count);
             sb.append('}');
             return sb.toString();
         }

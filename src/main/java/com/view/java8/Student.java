@@ -28,4 +28,8 @@ public class Student {
         return "[姓名=" + name + ", 分数=" + score + "]";
     }
 
+    public static void main(String[] args) {
+        Integer[] middleArr = new Integer[12];
+        System.out.println(middleArr.length);
+    }
 }
