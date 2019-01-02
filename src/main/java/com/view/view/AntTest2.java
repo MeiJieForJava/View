@@ -1,4 +1,4 @@
-package com.view.java8;
+package com.view.view;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -109,7 +109,7 @@ public class AntTest2 {
         Map<Integer, AntObject> map = fillArrayMap(arrays);
 
         Integer[] setArr = map.keySet().toArray(new Integer[]{});
-        int k = 11;
+        int k = 10;
 
         //第一步取值
         AntObject result = find_k(setArr, k);

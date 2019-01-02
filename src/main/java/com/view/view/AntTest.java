@@ -1,4 +1,4 @@
-package com.view.java8;
+package com.view.view;
 
 import java.math.BigDecimal;
 import java.util.*;
