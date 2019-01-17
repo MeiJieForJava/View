@@ -37,7 +37,7 @@ public class MyProxy {
     public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         IHello target = new Hello();
         HWInvocationHandler invocationHandler = new HWInvocationHandler(target);
-        IHello proxy = (IHello) Proxy.newProxyInstance(MyProxy.class.getClassLoader(), target.getClass().getInterfaces(), invocationHandler);
+        IHello proxy = (IHello) Proxy.newProxyInstance(IHello.class.getClassLoader(), target.getClass().getInterfaces(), invocationHandler);
         proxy.sayHello();
     }
 }
